@@ -204,6 +204,10 @@ class Ui_MainWindow(object):
         for data in play_data:
                 self.player_list.addItem(data[0])
                 self.point_list.addItem(str(data[1]))
+        sql2="SELECT * FROM Teams WHERE Name='"+value2+"' AND Matches='"+value+"';"
+        cur.execute(sql2)
+        record2=cur.fetchone()
+        self.points.setText(str(record2[2]))        
     def calculateScore(self):
         items = []
         for index in range(self.point_list.count()):
